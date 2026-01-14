@@ -121,83 +121,217 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 
-    // 8. 포트폴리오 페이지네이션 및 모달 (포트폴리오 페이지 전용)
+    // 8. 포트폴리오 관리 시스템 (데이터 기반 동적 생성)
     const portfolioContainer = document.getElementById('portfolioItems');
     if (portfolioContainer) {
-        const items = Array.from(portfolioContainer.getElementsByClassName('portfolio-item'));
+        /* 
+         * [포트폴리오 업로드 안내]
+         * 새로운 포트폴리오를 추가하려면 아래 portfolioData 배열의 맨 앞에 추가하세요.
+         * title: 제목
+         * desc: 설명
+         * thumbnail: 목록에 표시될 대표 이미지
+         * images: 클릭 시 팝업(모달)에서 보여줄 이미지 리스트 (여러 장 가능)
+         */
+        const portfolioData = [
+            {
+                title: "2025 글로벌 IT 혁신 컨퍼런스",
+                desc: "전 세계 IT 리더 500인이 모인 프리미엄 국제 행사",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg", "image/portfolio/2.jpg", "image/portfolio/3.jpg"]
+            },
+            {
+                title: "Nexus 런칭 쇼케이스",
+                desc: "감각적인 미디어 파사드와 차량 퍼포먼스의 환상적 조화",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg", "image/portfolio/2.jpg"]
+            },
+            {
+                title: "K-FOOD 월드 페스티벌",
+                desc: "한식의 세계화를 위한 글로벌 미식 축제 기획 및 운영",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg"]
+            },
+            {
+                title: "디지털 아트 컨텐포러리 전시",
+                desc: "몰입형 미디어 아트를 활용한 전시 공간 디자인",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg"]
+            },
+            {
+                title: "건축 디자인 어워드 2024",
+                desc: "국내 최고의 건축가들이 참여한 시상식 및 전시 기획",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg"]
+            },
+            {
+                title: "테크 서밋 오픈 이노베이션",
+                desc: "대기업 및 스타트업 협력을 위한 비즈니스 네트워킹 행사",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg"]
+            },
+            {
+                title: "메타버스 패션 위크 2024",
+                desc: "가상 세계와 현실을 잇는 하이브리드 패션쇼 운영",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg"]
+            },
+            {
+                title: "시네마틱 오케스트라 콘서트",
+                desc: "대형 LED 스크린과 오케스트라의 환상적인 협연",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg"]
+            },
+            {
+                title: "스마트 시티 비전 선포식",
+                desc: "미래 도시 비전을 시각화한 대규모 미디어 퍼포먼스",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg"]
+            },
+            {
+                title: "뷰티 브랜드 글로우 팝업스토어",
+                desc: "MZ세대를 겨냥한 감각적인 브랜드 체험 공간 구성",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg", "image/portfolio/2.jpg", "image/portfolio/3.jpg"]
+            },
+            {
+                title: "AI 컨퍼런스 투데이",
+                desc: "인공지능 기술의 미래를 논하는 지식 공유의 장",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg"]
+            },
+            {
+                title: "스포츠카 챌린지 2024",
+                desc: "역동적인 드라이빙 퍼포먼스와 레이싱 페스티벌",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg"]
+            },
+            {
+                title: "에너지 혁신 포럼",
+                desc: "지속 가능한 미래를 위한 에너지 산업 전문가 회의",
+                thumbnail: "image/portfolio/1.jpg",
+                images: ["image/portfolio/1.jpg"]
+            }
+            // 이곳에 새로운 항목을 추가하세요.
+        ];
+
         const pagination = document.getElementById('pagination');
-        const itemsPerPage = 12; // 3*4 배열
+        const itemsPerPage = 12; // 한 페이지에 표시할 개수 (3*4)
         let currentPage = 1;
 
-        function showPage(page) {
-            currentPage = page;
+        // 아이템 렌더링 함수
+        function renderItems(page) {
+            portfolioContainer.innerHTML = '';
             const start = (page - 1) * itemsPerPage;
             const end = start + itemsPerPage;
+            const pagedData = portfolioData.slice(start, end);
 
-            items.forEach((item, index) => {
-                if (index >= start && index < end) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
+            pagedData.forEach(data => {
+                const item = document.createElement('div');
+                item.className = 'portfolio-item';
+                item.innerHTML = `
+                    <div class="portfolio-item-image" style="background-image: url('${data.thumbnail}')">
+                        <div class="portfolio-item-overlay">
+                            <span>자세히 보기</span>
+                        </div>
+                    </div>
+                    <h3>${data.title}</h3>
+                    <p>${data.desc}</p>
+                `;
+
+                // 클릭 시 모달 오픈 이벤트 연결
+                item.addEventListener('click', () => openModal(data));
+                portfolioContainer.appendChild(item);
             });
 
-            // 페이지 버튼 활성화 상태 업데이트
-            const buttons = pagination.getElementsByClassName('page-btn');
-            Array.from(buttons).forEach((btn, idx) => {
-                if (idx + 1 === page) btn.classList.add('active');
-                else btn.classList.remove('active');
-            });
-
-            // 스크롤 상단 이동 (선택 사항)
-            window.scrollTo({ top: portfolioContainer.offsetTop - 100, behavior: 'smooth' });
+            updatePagination(page);
         }
 
-        function setupPagination() {
-            const pageCount = Math.ceil(items.length / itemsPerPage);
+        // 페이지네이션 업데이트 함수
+        function updatePagination(activePage) {
+            const pageCount = Math.ceil(portfolioData.length / itemsPerPage);
             pagination.innerHTML = '';
 
             for (let i = 1; i <= pageCount; i++) {
                 const btn = document.createElement('button');
                 btn.innerText = i;
                 btn.classList.add('page-btn');
-                if (i === 1) btn.classList.add('active');
-                btn.addEventListener('click', () => showPage(i));
+                if (i === activePage) btn.classList.add('active');
+                btn.addEventListener('click', () => {
+                    renderItems(i);
+                    window.scrollTo({ top: portfolioContainer.offsetTop - 100, behavior: 'smooth' });
+                });
                 pagination.appendChild(btn);
             }
         }
 
-        // 초기 실행
-        setupPagination();
-        showPage(1);
-
-        // 상세 보기 모달 로직
+        // 모달 관련 요소 및 슬라이드 로직
         const modal = document.getElementById('portfolioModal');
         const modalImg = document.getElementById('modalImage');
         const captionText = document.getElementById('modalCaption');
-        const closeBtn = document.getElementsByClassName('modal-close')[0];
+        const counterText = document.getElementById('modalCounter');
+        const closeBtn = document.querySelector('.modal-close');
+        const prevBtn = document.querySelector('.modal-prev');
+        const nextBtn = document.querySelector('.modal-next');
 
-        items.forEach(item => {
-            item.addEventListener('click', function () {
-                const imgSrc = this.getAttribute('data-img');
-                const title = this.querySelector('h3').innerText;
-                modal.style.display = "block";
-                modalImg.src = imgSrc;
-                captionText.innerHTML = title;
-                document.body.style.overflow = 'hidden'; // 스크롤 방지
-            });
-        });
+        let currentImageSet = [];
+        let currentImageIdx = 0;
 
-        closeBtn.onclick = function () {
-            modal.style.display = "none";
-            document.body.style.overflow = 'auto';
+        function openModal(data) {
+            currentImageSet = data.images || [data.thumbnail];
+            currentImageIdx = 0;
+
+            modal.style.display = "block";
+            updateModalContent(data.title);
+            document.body.style.overflow = 'hidden';
+
+            // 이미지 개수에 따라 버튼 노출 여부 결정
+            if (currentImageSet.length > 1) {
+                prevBtn.style.display = "block";
+                nextBtn.style.display = "block";
+            } else {
+                prevBtn.style.display = "none";
+                nextBtn.style.display = "none";
+            }
         }
 
-        window.onclick = function (event) {
+        function updateModalContent(title) {
+            modalImg.src = currentImageSet[currentImageIdx];
+            captionText.innerHTML = title;
+            counterText.innerHTML = `${currentImageIdx + 1} / ${currentImageSet.length}`;
+        }
+
+        // 이전/다음 버튼 이벤트
+        prevBtn.onclick = (e) => {
+            e.stopPropagation();
+            currentImageIdx = (currentImageIdx - 1 + currentImageSet.length) % currentImageSet.length;
+            updateModalContent(captionText.innerHTML);
+        };
+
+        nextBtn.onclick = (e) => {
+            e.stopPropagation();
+            currentImageIdx = (currentImageIdx + 1) % currentImageSet.length;
+            updateModalContent(captionText.innerHTML);
+        };
+
+        if (closeBtn) {
+            closeBtn.onclick = () => {
+                modal.style.display = "none";
+                document.body.style.overflow = 'auto';
+            };
+        }
+
+        window.onclick = (event) => {
             if (event.target == modal) {
                 modal.style.display = "none";
                 document.body.style.overflow = 'auto';
             }
+        };
+
+        // 초기 실행
+        const countDisplay = document.getElementById('portfolioCount');
+        if (countDisplay) {
+            countDisplay.innerText = portfolioData.length;
         }
+        renderItems(1);
     }
 });
