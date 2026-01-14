@@ -1,0 +1,1089 @@
+/* 
+ * After Entertainment - 전역 스타일시트
+ * 최종 수정: 2026-01-14
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+/* ==========================================================================
+   1. Design System & Base (전역 디자인 시스템 및 기본 스타일)
+   ========================================================================== */
+
+/* CSS 변수 정의 */
+:root {
+    --primary-red: #E63946;
+    --dark-red: #B91C1C;
+    --light-red: #FEE2E2;
+    --bg-white: #FFFFFF;
+    --bg-gray: #F9FAFB;
+    --text-black: #111827;
+    --text-gray: #4B5563;
+    --font-main: 'Noto Sans KR', sans-serif;
+    --font-eng: 'Montserrat', sans-serif;
+    --header-height: 80px;
+    --container-width: 1600px;
+    --transition-slow: all 1.2s ease;
+    --transition-base: all 0.5s ease;
+}
+
+/* 애니메이션 정의 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 15px));
+    }
+}
+
+/* 기본 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-black);
+    background-color: var(--bg-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    animation: fadeIn 1.5s ease-out;
+}
+
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-base);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* 공통 레이아웃 컴포넌트 */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+/* 공통 버튼 스타일 */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-base);
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-red);
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-red);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+}
+
+/* ==========================================================================
+   2. Shared Layout (공통 레이아웃: 헤더, 푸터, 서브 비주얼)
+   ========================================================================== */
+
+/* 헤더 스타일 */
+.header {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 헤더 내부 레이아웃 컨테이너 */
+.header .container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    grid-column: 1;
+    justify-self: start;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    letter-spacing: -1px;
+    font-family: var(--font-eng);
+    transition: var(--transition-base);
+}
+
+.header.scrolled .logo {
+    color: var(--primary-red);
+}
+
+/* 네비게이션 메뉴 영역 */
+.nav {
+    grid-column: 2;
+    justify-self: center;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 60px;
+}
+
+.nav-link {
+    font-family: var(--font-eng);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    position: relative;
+    padding: 5px 0;
+    letter-spacing: 1px;
+    transition: var(--transition-base);
+}
+
+.header.scrolled .nav-link {
+    color: var(--text-black);
+}
+
+.nav-link.contact-btn {
+    grid-column: 3;
+    justify-self: end;
+    background-color: var(--primary-red);
+    color: #FFFFFF !important;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    transition: var(--transition-base);
+}
+
+.nav-link.contact-btn::after {
+    display: none;
+}
+
+.nav-link.contact-btn:hover {
+    background-color: var(--dark-red);
+    transform: scale(1.05);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-red);
+}
+
+.header.scrolled .nav-link:hover,
+.header.scrolled .nav-link.active {
+    color: var(--primary-red);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #FFFFFF;
+    transition: var(--transition-base);
+}
+
+.header.scrolled .nav-link::after {
+    background-color: var(--primary-red);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* 애니메이션: 아래에서 위로 페이드인 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 서브 페이지 공통 비주얼 섹션 */
+.sub-visual {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('image/hero.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #ffffff;
+    padding: 200px 0 100px;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+}
+
+.sub-visual h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+    /* 서브 비주얼 제목 애니메이션 */
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.sub-visual p {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1.2rem;
+    /* 서브 비주얼 슬로건 애니메이션 (제목보다 약간 늦게 시작) */
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+    opacity: 0;
+    /* 애니메이션 시작 전 투명도 */
+}
+
+/* 서브 페이지 서브 비주얼 섹션 컨테이너 */
+.sub-visual .container {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* 페이지별 배경 이미지 설정 */
+.sub-visual.company-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('image/company/main.jpg');
+}
+
+.sub-visual.business-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('image/business/main.jpg');
+}
+
+.sub-visual.portfolio-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('image/portfolio/main.jpg');
+}
+
+/* 푸터 스타일 */
+.footer {
+    background-color: #111827;
+    color: #FFFFFF;
+    padding: 70px 0 50px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 100px;
+    margin-bottom: 60px;
+    align-items: start;
+}
+
+.footer-links {
+    min-width: 150px;
+}
+
+.footer-info .logo {
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.footer-info p {
+    color: #9CA3AF;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.footer-links h4 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: #9CA3AF;
+    font-size: 0.95rem;
+}
+
+.footer-links ul li a:hover {
+    color: var(--primary-red);
+}
+
+/* 푸터 하단 저작권 정보 */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 40px;
+    text-align: center;
+    color: #6B7280;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   3. Main Page (index.html)
+   ========================================================================== */
+
+/* 히어로 섹션 배경 및 콘텐츠 */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    margin-top: 0;
+}
+
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* 히어로 섹션 개별 슬라이드 이미지 */
+.hero-slide:nth-child(1) {
+    background-image: url('image/hero_1.png');
+}
+
+.hero-slide:nth-child(2) {
+    background-image: url('image/hero_2.png');
+}
+
+.hero-slide:nth-child(3) {
+    background-image: url('image/hero_3.png');
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 140px;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+section {
+    padding: 0;
+}
+
+/* 포트폴리오 슬라이더 섹션 (메인 페이지 전용) */
+.portfolio-slider-section {
+    padding: 120px 0;
+    overflow: hidden;
+    background-color: var(--bg-white);
+}
+
+.portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+}
+
+.portfolio-header .title-area {
+    text-align: left;
+}
+
+.portfolio-header .title-area span {
+    font-family: var(--font-eng);
+    color: var(--text-gray);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.portfolio-header .title-area h2 {
+    font-family: var(--font-eng);
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+.portfolio-header .title-area p {
+    color: var(--primary-red);
+    font-weight: 600;
+}
+
+.view-more-btn {
+    border: 1px solid #ddd;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-family: var(--font-eng);
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: var(--transition-base);
+}
+
+.view-more-btn:hover {
+    border-color: var(--primary-red);
+    color: var(--primary-red);
+}
+
+.slider-container {
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+}
+
+.slider-container:hover .slider-track {
+    animation-play-state: paused;
+}
+
+.slider-item {
+    width: 400px;
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--bg-gray);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-base);
+}
+
+.slider-item:hover img {
+    transform: scale(1.1);
+}
+
+.slider-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: #fff;
+    opacity: 0;
+    transition: var(--transition-base);
+}
+
+.slider-item:hover .overlay {
+    opacity: 1;
+}
+
+/* 포트폴리오 영역 플레이스홀더 스타일 */
+.portfolio-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.portfolio-placeholder-1 {
+    background: #ddd;
+    color: #999;
+}
+
+.portfolio-placeholder-2 {
+    background: #ccc;
+    color: #888;
+}
+
+.portfolio-placeholder-3 {
+    background: #bbb;
+    color: #777;
+}
+
+.portfolio-placeholder-4 {
+    background: #aaa;
+    color: #666;
+}
+
+.portfolio-placeholder-5 {
+    background: #999;
+    color: #555;
+}
+
+/* 오시는 길 섹션 (메인 페이지 전용) */
+.location-section {
+    padding: 120px 0 120px;
+    position: relative;
+    background-color: var(--bg-gray);
+}
+
+.location-section .section-title {
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.location-section .section-title span {
+    font-family: var(--font-eng);
+    color: var(--text-gray);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.location-section .section-title h2 {
+    font-family: var(--font-eng);
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.location-section .section-title p {
+    color: var(--primary-red);
+    font-weight: 600;
+}
+
+/* 네이버 지도 배경 컨테이너 */
+.map-container {
+    width: 100%;
+    height: 500px;
+    border-radius: 30px;
+    background-image: url('image/naver_map.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.location-info-card {
+    position: absolute;
+    top: 50%;
+    left: 80px;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 20px;
+    width: 450px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid var(--primary-red);
+}
+
+.location-info-card span {
+    font-family: var(--font-eng);
+    color: var(--primary-red);
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.location-info-card h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: var(--text-black);
+}
+
+.kakao-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #FEE500;
+    color: #3C1E1E;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 30px;
+    transition: var(--transition-base);
+}
+
+.kakao-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.kakao-btn:hover {
+    background-color: #E6CE00;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.location-details p {
+    margin-bottom: 12px;
+    color: var(--text-gray);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.location-details p strong {
+    color: var(--text-black);
+    min-width: 60px;
+}
+
+/* ==========================================================================
+   4. Company Page (company.html)
+   ========================================================================== */
+
+.company-intro {
+    padding: 120px 0;
+}
+
+.company-intro .section-title p {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: var(--text-gray);
+}
+
+.company-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.company-image-placeholder {
+    background-color: var(--bg-gray);
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.company-image-placeholder span {
+    font-size: 5rem;
+    color: var(--primary-red);
+    opacity: 0.2;
+    font-weight: 900;
+}
+
+.company-mission h3 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.company-mission>p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.company-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.value-card {
+    padding: 20px;
+    border-left: 4px solid var(--primary-red);
+    background-color: var(--bg-gray);
+}
+
+.value-card h4 {
+    margin-bottom: 10px;
+}
+
+.value-card p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+/* ==========================================================================
+   5. Business Page (business.html)
+   ========================================================================== */
+
+.business-list {
+    padding: 120px 0;
+}
+
+.business-list .section-title p {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: var(--text-gray);
+}
+
+.business-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.business-card {
+    padding: 40px;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    transition: var(--transition-base);
+    text-align: center;
+}
+
+.business-card:hover {
+    border-color: var(--primary-red);
+    transform: translateY(-10px);
+}
+
+.business-icon {
+    width: 80px;
+    height: 80px;
+    background-color: var(--light-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+}
+
+.business-icon span {
+    color: var(--primary-red);
+    font-size: 2rem;
+}
+
+.business-card h3 {
+    margin-bottom: 15px;
+}
+
+.business-card p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   6. Portfolio Page (portfolio.html)
+   ========================================================================== */
+
+.portfolio-grid {
+    padding: 120px 0;
+}
+
+.portfolio-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3열 배열 */
+    gap: 40px;
+}
+
+.portfolio-item {
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+}
+
+.portfolio-item-image {
+    width: 100%;
+    height: 300px;
+    /* 기존보다 약간 높이 조절 */
+    background-color: var(--bg-gray);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-position: center;
+    background-size: cover;
+}
+
+.portfolio-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(230, 57, 70, 0.8);
+    /* 브랜드 레드 컬러 오버레이 */
+    opacity: 0;
+    transition: var(--transition-base);
+}
+
+.portfolio-item:hover .portfolio-item-overlay {
+    opacity: 1;
+}
+
+.portfolio-item-overlay span {
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+}
+
+.portfolio-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    font-weight: 800;
+}
+
+.portfolio-item p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.page-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.page-btn.active {
+    background: var(--primary-red);
+    color: #fff;
+    border-color: var(--primary-red);
+}
+
+.page-btn:hover:not(.active) {
+    border-color: var(--primary-red);
+    color: var(--primary-red);
+}
+
+/* 포트폴리오 모달 (팝업) 스타일 */
+.portfolio-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    padding-top: 60px;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 70vh;
+    border-radius: 10px;
+    animation: zoomIn 0.3s;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 20px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.modal-close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: var(--primary-red);
+}
+
+/* ==========================================================================
+   7. Responsive Styles (반응형 합산)
+   ========================================================================== */
+
+/* 모바일 반응형 디자인 (768px 이하) */
+@media (max-width: 768px) {
+    .portfolio-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .portfolio-header .title-area h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .nav-menu {
+        gap: 20px;
+    }
+
+    .business-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-items {
+        grid-template-columns: 1fr;
+    }
+
+    .company-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* 모바일 반응형 지도 정보 카드 (1024px 이하) */
+@media (max-width: 1024px) {
+    .location-info-card {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        margin-top: 30px;
+        box-shadow: none;
+    }
+}

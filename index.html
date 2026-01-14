@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에프터 엔터테인먼트 - AFTER ENT</title>
+    <!-- 전역 스타일시트: 디자인 시스템 및 페이지별 레이아웃 통합 관리 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- 헤더 / 내비게이션 -->
+    <header class="header">
+        <div class="container">
+            <!-- 로고 (왼쪽 정렬) -->
+            <a href="index.html" class="logo">AFTER ENT</a>
+
+            <!-- 메인 메뉴 (중앙 정렬) -->
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="company.html" class="nav-link">COMPANY</a></li>
+                    <li><a href="business.html" class="nav-link">BUSINESS</a></li>
+                    <li><a href="portfolio.html" class="nav-link">PORTFOLIO</a></li>
+                </ul>
+            </nav>
+
+            <!-- 문의 버튼 (오른쪽 정렬) -->
+            <a href="https://open.kakao.com/o/so6HnEfh" target="_blank" class="nav-link contact-btn">CONTACT</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 히어로 섹션 (배경 슬라이더) -->
+        <section class="hero">
+            <div class="hero-slider">
+                <div class="hero-slide active"></div>
+                <div class="hero-slide"></div>
+                <div class="hero-slide"></div>
+            </div>
+            <div class="container hero-content">
+                <h1>IMAGINE EXTRAORDINARY<br>EXPERIENCE</h1>
+                <p>에프터 엔터테인먼트가 만드는 단 하나의 특별한 순간</p>
+            </div>
+        </section>
+
+        <!-- 포트폴리오 슬라이더 섹션 -->
+        <section class="portfolio-slider-section">
+            <div class="container">
+                <div class="portfolio-header">
+                    <div class="title-area">
+                        <span>MEDIA & GALLERY</span>
+                        <h2>PORTFOLIO</h2>
+                    </div>
+                    <a href="portfolio.html" class="view-more-btn">VIEW MORE</a>
+                </div>
+
+                <div class="slider-container">
+                    <div class="slider-track" id="sliderTrack">
+                        <!-- 슬라이드 아이템 (스크립트에서 복제하여 무한 루프 구현 예정) -->
+                        <div class="slider-item">
+                            <div class="portfolio-placeholder portfolio-placeholder-1">
+                                PROJECT 01</div>
+                            <div class="overlay">
+                                <h4>2025 Global Forum</h4>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="portfolio-placeholder portfolio-placeholder-2">
+                                PROJECT 02</div>
+                            <div class="overlay">
+                                <h4>Brand Launching</h4>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="portfolio-placeholder portfolio-placeholder-3">
+                                PROJECT 03</div>
+                            <div class="overlay">
+                                <h4>Summer Festival</h4>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="portfolio-placeholder portfolio-placeholder-4">
+                                PROJECT 04</div>
+                            <div class="overlay">
+                                <h4>Corporate Party</h4>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="portfolio-placeholder portfolio-placeholder-5">
+                                PROJECT 05</div>
+                            <div class="overlay">
+                                <h4>After Ent Showcase</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 오시는 길 섹션 -->
+        <section class="location-section">
+            <div class="container">
+                <div class="section-title">
+                    <span>COMPANY</span>
+                    <h2>LOCATION</h2>
+                </div>
+
+                <div class="map-container">
+                    <div class="location-info-card">
+                        <span>AFTER ENTERTAINMENT</span>
+                        <h3>찾아오시는 길</h3>
+                        <div class="location-details">
+                            <p><strong>주소</strong> 대구 북구 매전로4길 20-41</p>
+                            <p><strong>TEL</strong> 010-3906-8581</p>
+                            <p><strong>EMAIL</strong> hgp070707@naver.com</p>
+                            <p><strong>주차</strong> 건물 주차장 이용가능</p>
+                        </div>
+                        <a href="https://open.kakao.com/o/so6HnEfh" target="_blank" class="kakao-btn">
+                            <svg class="kakao-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 3C6.477 3 2 6.806 2 11.5c0 2.946 1.748 5.56 4.417 7.152L5 22l4.833-1.812c.692.203 1.423.312 2.167.312 5.523 0 10-3.806 10-8.5S17.523 3 12 3z" />
+                            </svg>
+                            카카오톡 문의하기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <a href="index.html" class="logo">AFTER ENTERTAINMENT</a>
+                    <p>대표자: 홍길동 | 사업자번호: 123-45-67890</p>
+                    <p>주소: 대구 북구 매전로4길 20-41</p>
+                    <p>TEL: 010-3906-8581 | EMAIL: hgp070707@naver.com</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="company.html">회사소개</a></li>
+                        <li><a href="business.html">사업분야</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="portfolio.html">포트폴리오</a></li>
+                        <li><a href="https://open.kakao.com/o/so6HnEfh" target="_blank">문의하기</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#">인스타그램</a></li>
+                        <li><a href="#">블로그</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 After Entertainment. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 공통 스크립트 -->
+    <script src="script.js"></script>
+</body>
+
+</html>

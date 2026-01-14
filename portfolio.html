@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO - AFTER ENT</title>
+    <!-- 전역 스타일시트: 디자인 시스템 및 페이지 레이아웃 통합 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">AFTER ENT</a>
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="company.html" class="nav-link">COMPANY</a></li>
+                    <li><a href="business.html" class="nav-link">BUSINESS</a></li>
+                    <li><a href="portfolio.html" class="nav-link">PORTFOLIO</a></li>
+                </ul>
+            </nav>
+            <a href="https://open.kakao.com/o/so6HnEfh" target="_blank" class="nav-link contact-btn">CONTACT</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="sub-visual portfolio-bg">
+            <div class="container">
+                <h1>PORTFOLIO</h1>
+                <p>후기가 좋은 회사 에프터 엔터테인먼트</p>
+            </div>
+        </section>
+
+        <section class="portfolio-grid">
+            <div class="container">
+                <!-- 포트폴리오 그리드: 3*4 배열 (JS에서 페이지네이션 처리) -->
+                <div class="portfolio-items" id="portfolioItems">
+                    <!-- 포트폴리오 1 -->
+                    <div class="portfolio-item" data-img="image/portfolio/1.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/1.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>2025 글로벌 IT 혁신 컨퍼런스</h3>
+                        <p>전 세계 IT 리더 500인이 모인 프리미엄 국제 행사</p>
+                    </div>
+                    <!-- 포트폴리오 2 -->
+                    <div class="portfolio-item" data-img="image/portfolio/2.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/2.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>Nexus 런칭 쇼케이스</h3>
+                        <p>감각적인 미디어 파사드와 차량 퍼포먼스의 환상적 조화</p>
+                    </div>
+                    <!-- 포트폴리오 3 -->
+                    <div class="portfolio-item" data-img="image/portfolio/3.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/3.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>K-FOOD 월드 페스티벌</h3>
+                        <p>한식의 세계화를 위한 글로벌 미식 축제 기획 및 운영</p>
+                    </div>
+                    <!-- 포트폴리오 4 -->
+                    <div class="portfolio-item" data-img="image/portfolio/4.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/4.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>디지털 아트 컨템포러리 전시</h3>
+                        <p>몰입형 미디어 아트를 활용한 전시 공간 디자인</p>
+                    </div>
+                    <!-- 포트폴리오 5 -->
+                    <div class="portfolio-item" data-img="image/portfolio/5.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/5.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>건축 디자인 어워드 2024</h3>
+                        <p>국내 최고의 건축가들이 참여한 시상식 및 전시 기획</p>
+                    </div>
+                    <!-- 포트폴리오 6 -->
+                    <div class="portfolio-item" data-img="image/portfolio/6.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/6.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>테크 서밋 오픈 이노베이션</h3>
+                        <p>대기업 및 스타트업 협력을 위한 비즈니스 네트워킹 행사</p>
+                    </div>
+                    <!-- 포트폴리오 7 -->
+                    <div class="portfolio-item" data-img="image/portfolio/7.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/7.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>메타버스 패션 위크 2024</h3>
+                        <p>가상 세계와 현실을 잇는 하이브리드 패션쇼 운영</p>
+                    </div>
+                    <!-- 포트폴리오 8 -->
+                    <div class="portfolio-item" data-img="image/portfolio/8.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/8.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>시네마틱 오케스트라 콘서트</h3>
+                        <p>대형 LED 스크린과 오케스트라의 환상적인 협연</p>
+                    </div>
+                    <!-- 포트폴리오 9 -->
+                    <div class="portfolio-item" data-img="image/portfolio/9.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/9.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>스마트 시티 비전 선포식</h3>
+                        <p>미래 도시 비전을 시각화한 대규모 미디어 퍼포먼스</p>
+                    </div>
+                    <!-- 포트폴리오 10 -->
+                    <div class="portfolio-item" data-img="image/portfolio/10.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/10.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>뷰티 브랜드 글로우 팝업스토어</h3>
+                        <p>MZ세대를 겨냥한 감각적인 브랜드 체험 공간 구성</p>
+                    </div>
+                    <!-- 포트폴리오 11 -->
+                    <div class="portfolio-item" data-img="image/portfolio/11.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/11.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>AI 컨퍼런스 투데이</h3>
+                        <p>인공지능 기술의 미래를 논하는 지식 공유의 장</p>
+                    </div>
+                    <!-- 포트폴리오 12 -->
+                    <div class="portfolio-item" data-img="image/portfolio/12.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/12.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>스포츠카 챌린지 2024</h3>
+                        <p>역동적인 드라이빙 퍼포먼스와 레이싱 페스티벌</p>
+                    </div>
+                    <!-- 포트폴리오 13 (2페이지 테스트용) -->
+                    <div class="portfolio-item" data-img="image/portfolio/1.jpg">
+                        <div class="portfolio-item-image"
+                            style="background-image: url('image/portfolio/1.jpg'); background-size: cover;">
+                            <div class="portfolio-item-overlay">
+                                <span>자세히 보기</span>
+                            </div>
+                        </div>
+                        <h3>에너지 혁신 포럼</h3>
+                        <p>지속 가능한 미래를 위한 에너지 산업 전문가 회의</p>
+                    </div>
+                </div>
+
+                <!-- 페이지네이션 컨트롤 -->
+                <div class="pagination" id="pagination">
+                    <!-- JS에서 동적으로 생성됨 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 이미지 상세 보기 모달 (팝업) -->
+        <div id="portfolioModal" class="portfolio-modal">
+            <span class="modal-close">&times;</span>
+            <img class="modal-content" id="modalImage">
+            <div id="modalCaption" class="modal-caption"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <a href="index.html" class="logo">AFTER ENTERTAINMENT</a>
+                    <p>대표자: 홍길동 | 사업자번호: 123-45-67890</p>
+                    <p>주소: 대구 북구 매전로4길 20-41</p>
+                    <p>TEL: 010-3906-8581 | EMAIL: hgp070707@naver.com</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="company.html">회사소개</a></li>
+                        <li><a href="business.html">사업분야</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="portfolio.html">포트폴리오</a></li>
+                        <li><a href="https://open.kakao.com/o/so6HnEfh" target="_blank">문의하기</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#">인스타그램</a></li>
+                        <li><a href="#">블로그</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 After Entertainment. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
