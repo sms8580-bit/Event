@@ -67,20 +67,27 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 
-    // 5. 페이지 페이드아웃 효과 (링크 클릭 시)
+    // 5. 페이지 페이드아웃 및 캐시 대응 (BFcache 해결)
     const links = document.querySelectorAll('a');
     links.forEach(link => {
         link.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            // 외부 링크나 앵커 링크 제외한 내부 페이지 이동 시에만 작동
-            if (href && href.endsWith('.html') && !href.startsWith('http') && href !== currentPath) {
+            // 외부 링크, 대상을 새 창으로 여는 링크, 혹은 현재 페이지 링크를 제외하고 작동
+            if (href && href.endsWith('.html') && !href.startsWith('http') && href !== currentPath && this.target !== '_blank') {
                 e.preventDefault();
                 document.body.classList.add('fade-out');
                 setTimeout(() => {
                     window.location.href = href;
-                }, 800); // CSS transition 시간과 맞춤
+                }, 800);
             }
         });
+    });
+
+    // 브라우저 뒤로가기/앞으로가기 시 캐시된 페이지가 표시될 때 fade-out 클래스 제거
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+            document.body.classList.remove('fade-out');
+        }
     });
 
     // 6. 무한 슬라이더 아이템 복제
