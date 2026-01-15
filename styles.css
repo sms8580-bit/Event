@@ -457,7 +457,8 @@ img {
 .hero-content {
     position: relative;
     z-index: 1;
-    padding-top: 140px;
+    padding-top: 80px;
+    width: 100%;
 }
 
 .hero h1 {
@@ -470,7 +471,7 @@ img {
 
 .hero p {
     font-size: 1.25rem;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     opacity: 0.9;
 }
 
@@ -489,7 +490,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .portfolio-header .title-area {
@@ -499,11 +500,11 @@ section {
 .portfolio-header .title-area span {
     font-family: var(--font-eng);
     color: var(--text-gray);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 2px;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .portfolio-header .title-area h2 {
@@ -640,20 +641,21 @@ section {
 .location-section .section-title span {
     font-family: var(--font-eng);
     color: var(--text-gray);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 2px;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .location-section .section-title h2 {
     font-family: var(--font-eng);
     font-size: 3rem;
     font-weight: 900;
-    line-height: 1;
-    margin-bottom: 15px;
+    line-height: 0.9;
+    margin-bottom: 10px;
     display: block;
+    color: #111827;
 }
 
 .location-section .section-title p {
@@ -679,13 +681,13 @@ section {
     top: 50%;
     left: 80px;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    background: #FFFFFF;
     padding: 50px;
-    border-radius: 20px;
+    border-radius: 30px;
     width: 450px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
     border-left: 6px solid var(--primary-red);
+    z-index: 10;
 }
 
 .location-info-card span {
@@ -740,7 +742,8 @@ section {
 
 .location-details p strong {
     color: var(--text-black);
-    min-width: 60px;
+    min-width: 80px;
+    display: inline-block;
 }
 
 /* ==========================================================================
@@ -1169,7 +1172,7 @@ section {
 .menu-toggle .bar {
     height: 3px;
     width: 100%;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -1194,12 +1197,16 @@ section {
 /* 태블릿 반응형 (1024px 이하) */
 @media (max-width: 1024px) {
     :root {
-        --container-width: 95%;
+        --container-width: 100%;
+    }
+
+    .container {
+        padding: 0 15px;
     }
 
     .header .container {
         grid-template-columns: 1fr auto auto;
-        gap: 20px;
+        gap: 10px;
     }
 
     .nav-menu {
@@ -1207,8 +1214,19 @@ section {
     }
 
     .footer-content {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 50px;
+        text-align: center;
+    }
+
+    .footer-links {
+        display: none;
+    }
+
+    .footer-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .location-info-card {
@@ -1216,9 +1234,10 @@ section {
         top: 0;
         left: 0;
         transform: none;
-        width: 100%;
-        margin-top: 30px;
-        padding: 30px;
+        width: calc(100% - 30px);
+        margin: -60px auto 0;
+        padding: 40px 30px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
 
     .intro-flex {
@@ -1253,7 +1272,7 @@ section {
         right: -100%;
         width: 80%;
         height: 100vh;
-        background-color: rgba(255, 255, 255, 0.98);
+        background-color: rgba(255, 255, 255, 0.90);
         backdrop-filter: blur(10px);
         display: flex;
         flex-direction: column;
@@ -1276,13 +1295,26 @@ section {
 
     .nav-link {
         color: var(--text-black) !important;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .nav-link.contact-btn {
-        margin-top: 20px;
+        margin-top: 0;
         grid-column: auto;
         justify-self: center;
+        padding: 8px 18px;
+        font-size: 0.8rem;
+    }
+
+    /* 모바일 네비게이션 내부의 메뉴 링크들 */
+    .nav.is-active .nav-link {
+        margin: 10px 0;
+    }
+
+    .nav.is-active .contact-btn {
+        margin-top: 20px;
+        font-size: 1.2rem;
+        padding: 12px 30px;
     }
 
     .header.scrolled .nav-link {
@@ -1291,26 +1323,31 @@ section {
 
     /* 히어로 섹션 */
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        word-break: keep-all;
     }
 
     .hero p {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
-    /* 섹션 타이틀 */
-    .section-title h2 {
-        font-size: 2rem;
+    /* 섹션 타이틀 공통화 (PORTFOLIO, LOCATION 등) */
+    .location-section .section-title h2,
+    .portfolio-header .title-area h2 {
+        font-size: 2.2rem;
+        letter-spacing: -1px;
+        font-weight: 900;
     }
 
     .portfolio-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
+        gap: 15px;
+        margin-bottom: 40px;
     }
 
-    .portfolio-header .title-area h2 {
-        font-size: 2.2rem;
+    .view-more-btn {
+        display: none !important;
     }
 
     /* 그리드 시스템 조정 */
@@ -1324,13 +1361,6 @@ section {
         text-align: center;
     }
 
-    .footer-info,
-    .footer-links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
     /* 서브 비주얼 */
     .sub-visual {
         padding: 150px 0 60px;
@@ -1338,7 +1368,11 @@ section {
     }
 
     .sub-visual h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+    }
+
+    .sub-visual p {
+        font-size: 1rem;
     }
 
     /* 슬라이더 아이템 크기 조정 */
@@ -1347,29 +1381,64 @@ section {
         height: 200px;
     }
 
-    /* 오시는길 */
+    /* 오시는길 - 지도 삭제 및 카드 정렬 */
     .map-container {
-        height: 300px;
+        height: auto;
+        background-image: none !important;
+        box-shadow: none;
+        overflow: visible;
+        border-radius: 0;
+    }
+
+    .location-info-card {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        margin: 0;
+        padding: 30px 20px;
+        box-shadow: none;
+        border: 1px solid #eee;
+        border-left: 6px solid var(--primary-red);
+        background: #fff;
     }
 
     /* 회사 소개 페이지 추가 조정 */
+    .intro-text h2 {
+        font-size: 1.8rem;
+        white-space: normal;
+        flex-wrap: wrap;
+    }
+
+    .intro-text h2 span {
+        margin-left: 0;
+        width: 100%;
+        display: block;
+        margin-top: 5px;
+    }
+
     .intro-text h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     .intro-quote h4 {
-        font-size: 1.4rem;
+        font-size: 1.1rem;
+    }
+
+    .location-info-card h3 {
+        font-size: 1.6rem;
     }
 }
 
 /* 초소형 모바일 (480px 이하) */
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .sub-visual h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .logo {
