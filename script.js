@@ -28,6 +28,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 2-1. 모바일 메뉴 토글 로직 추가
+    const menuToggle = document.getElementById('mobile-menu');
+    const nav = document.querySelector('.nav');
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('is-active');
+            nav.classList.toggle('is-active');
+
+            // 메뉴 열릴 때 바디 스크롤 방지
+            if (nav.classList.contains('is-active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // 메뉴 링크 클릭 시 메뉴 닫기
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('is-active');
+                nav.classList.remove('is-active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    }
+
     // 3. 문의하기 폼 제출 처리
     const inquiryForm = document.getElementById('inquiryForm');
     if (inquiryForm) {
